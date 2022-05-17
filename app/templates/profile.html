@@ -1,1 +1,58 @@
 <h1>hello user</h1>
+{% extends 'base.html' %}
+<!--include page stylings-->
+{% block styles %}
+  {{super()}}
+    <!-- Font Awesome -->
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        rel="stylesheet"
+        />
+        <!-- Google Fonts -->
+        <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        rel="stylesheet"
+        />
+        <!-- MDB -->
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css"
+        rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
+{% endblock %}
+
+<!--page title-->
+{% block title %}
+<title>Userprofile</title>
+{% endblock %}
+
+<!--include navbar-->
+{% block navbar %}
+  {% include 'nav.html' %}
+{% endblock %}
+
+{% block body%}
+<!--add body content here-->
+<h2>it is working now</h2>
+<!---->
+
+
+/home/moringa/Desktop/Python/Student Portal/app/static/css/profile.css
+
+
+
+
+
+
+
+
+{% endblock %}
+
+<!-- include scripts-->
+{% block scripts%}
+        <!-- MDB -->
+        <script
+        type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"
+        ></script>
+{% endblock %}
