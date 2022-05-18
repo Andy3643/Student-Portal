@@ -1,7 +1,7 @@
 from flask import render_template,url_for,redirect,flash
 from . import main
-from .forms import RegistrationForm,LoginForm,PitchForm,CommentForm
-from models import User
+from .forms import RegistrationForm,LoginForm
+from app.models import User
 from app import db
 from flask_login import login_user,current_user
 
@@ -12,12 +12,37 @@ def index():
     """
     return render_template('index.html')
   
-
+# remove to be acceses only on user login
 @main.route('/userprofile')
 def userprofile():
     
     return render_template('profile.html')
-  
+
+
+
+#user registration
+@main.route('/sign-up',methods=['GET','POST'])
+def signup():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user =  User(email = form.email.data, username = form.username.data,password = form.password.data)
+        user.save_user()
+        
+
+        return redirect(url_for('login'))
+    
+        title = "New Account"
+    return render_template('register.html',signup_form = form)
+
+
+
+
+
+
+
+
+    
+#user login  
 @main.route('/login',methods=['GET','POST'])
 def login():
     form = LoginForm()
@@ -27,5 +52,5 @@ def login():
             login_user(user)
             flash('Thanks for logging in!')
         return redirect(url_for('main.userprofile'))
-    return render_template('login.html',title = 'login',form = form)
+    return render_template('login.html',title = 'login',login_form = form)
 
