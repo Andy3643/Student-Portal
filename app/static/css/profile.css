@@ -25,3 +25,11 @@ td{
     font-weight: bold;
     font-weight: 15px;
 }
+.headertable{
+    display: flex;
+    justify-content: space-between;
+    background-color: grey;
+}
+.action-btns{
+    
+}
