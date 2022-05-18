@@ -1,12 +1,14 @@
-from flask import Flask, render_template
 
-app = Flask(__name__)
+from app import create_app,db
+from flask_script import Manager, Server
 
-@app.route('/')
-@app.route('/home')
-@app.route('/CodeSpeedy')
-def Welcome():
-    return render_template('index.html')
+app = create_app('development')
+manager =  Manager(app)
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+
+
+
+if __name__== "__main__":
+    manager.run()
+
