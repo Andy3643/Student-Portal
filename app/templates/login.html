@@ -1,30 +1,37 @@
-{% extends 'base.html'%}
+{% import 'bootstrap/wtf.html' as wtf%}
+{% extends "bootstrap/base.html" %}
 
-{% block content%}
+{% block styles%}
+    {{ super() }}
+    
+{% endblock %}
 
-{% for message in get_flashed_messages() %}
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-    {{message}}
-{% endfor %}
-
-
-<div class="login-form">
-<form method="POST"action="" class="mx-4 mt-4 ">
-    {{ form.hidden_tag()}}
-<fieldset >
-    <legend>Login into your Account</legend>
-    <div class="form-group col-4">
-        {{form.email.label(class= "form-control-label")}}
-        {{form.email(class='form-control',placeholder='email')}} <br>
-        {{form.password.label(class= "form-control-label")}}
-        {{form.password(class='form-control',placeholder='password')}} <br>
-        <button type="submit" class="btn btn-primary">{{ form.login(class='form-control')}}</button>
-
+{% block body %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-3"> </div>
+  <!--login form start -->
+      <div class="col-md-6 login">
+          <h2 class = 'text-center '>SIGN IN</h2>
+        <!-- Flash message -->
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger">
+            <button  type="button" class="close btn-success" data-dismiss="alert">&times;</button>
+            {{ message }}
+            </div>
+  
+        {% endfor %}
+        <!-- Login form  -->
+  
+        {{ wtf.quick_form(login_form) }}
+  
+        <p> Don't  have an account?  <a href="{{url_for('main.signup')}}" style = "color:blue">Register here</a></p>
+  
+      </div>
+      <!--login form start -->
+  
+      <div class="col-md-3"> </div>
+  
     </div>
-</fieldset>
-<p> Don't have an account? <a id="sign" href="{{url_for('main.register')}}">Sign up here</a></p>
-</form>
-</div>
-
-
+  </div>
 {% endblock %}
