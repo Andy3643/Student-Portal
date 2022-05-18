@@ -3,7 +3,7 @@ from . import main
 from .forms import RegistrationForm,LoginForm,PitchForm,CommentForm
 from models import User
 from app import db
-from flask_login import login_required, login_user,current_user
+from flask_login import login_user,current_user
 
 
 @main.route('/login',methods=['GET','POST'])
