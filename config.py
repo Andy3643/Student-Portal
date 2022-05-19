@@ -1,7 +1,7 @@
 import os
 class Config():
-    SECRET_KEY = 'secretkey1'
-    SQLALCHEMY_DATABASE_URI=''
+    SECRET_KEY='secretkey1'
+    SQLALCHEMY_DATABASE_URI='postgresql://lilly:12345@localhost/portal'
     
     
 class ProdConfig(Config):
