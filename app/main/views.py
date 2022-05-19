@@ -1,7 +1,7 @@
-from flask import render_template,url_for,redirect,flash
+from flask import render_template, request,url_for,redirect,flash
 from . import main
 from .forms import RegistrationForm,LoginForm
-from app.models import User
+from app.models import Course, User
 from app import db
 from flask_login import login_user,current_user
 
@@ -34,13 +34,6 @@ def signup():
         title = "New Account"
     return render_template('register.html',signup_form = form)
 
-
-
-
-
-
-
-
     
 #user login  
 @main.route('/login',methods=['GET','POST'])
@@ -54,3 +47,21 @@ def login():
         return redirect(url_for('main.userprofile'))
     return render_template('login.html',title = 'login',login_form = form)
 
+
+
+
+
+#post data
+@main.route('/')
+def insert():
+    
+    if request.method == 'POST':
+        code = request.form['code']
+        title = request.form['title']
+        
+        my_data = Course(code,title)
+        db.session.add(my_data)
+        db.session.commit(my_data)
+        
+        flash ("You have succesfully registered for the course")
+        return redirect(url_for('userprofile'))
