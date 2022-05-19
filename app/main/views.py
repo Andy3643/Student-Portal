@@ -15,8 +15,9 @@ def index():
 # remove to be acceses only on user login
 @main.route('/userprofile')
 def userprofile():
+    all_course = Course.query.all()
     
-    return render_template('profile.html')
+    return render_template('profile.html',courses = all_course)
 
 
 
@@ -52,7 +53,7 @@ def login():
 
 
 #post data
-@main.route('/')
+@main.route('/insert')
 def insert():
     
     if request.method == 'POST':
@@ -65,3 +66,13 @@ def insert():
         
         flash ("You have succesfully registered for the course")
         return redirect(url_for('userprofile'))
+    
+#delete course
+@main.route('/delete/<id>/', methods = ['GET', 'POST'])
+def delete(id):
+    my_data = Course.query.get(id)
+    db.session.delete(my_data)
+    db.session.commit()
+    flash("The course has been deleted")
+
+    return redirect(url_for('userprofile'))
