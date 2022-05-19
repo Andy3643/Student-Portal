@@ -34,13 +34,6 @@ def signup():
         title = "New Account"
     return render_template('register.html',signup_form = form)
 
-
-
-
-
-
-
-
     
 #user login  
 @main.route('/login',methods=['GET','POST'])
