@@ -11,6 +11,8 @@ from flask_login import LoginManager
 bootstrap = Bootstrap()
 db = SQLAlchemy()
 login_manager = LoginManager()
+login_manager.session_protection='strong'
+login_manager.login_view='main.login'
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -19,6 +21,8 @@ def create_app(config_name):
     #initialize extensions
     db.init_app(app)
     bootstrap.init_app(app)
+    login_manager.init_app(app)
+    
     
     # registering main blueprint
     from .main import main as main_blueprint

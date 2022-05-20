@@ -100,16 +100,24 @@ def insert():
         return redirect(url_for('main.userprofile'))
     
 #delete course
-@main.route('/delete/<id>')
-def delete(id):
-    course_delete = Course.query.get(id)
+@main.route('/delete/<int:course_id>')
+def delete(course_id):
+    course_delete = Course.query.filter_by(id=course_id).first()
     db.session.delete(course_delete)
     db.session.commit()
     flash("The course has been deleted")
 
-    return redirect(url_for('userprofile'))
+    return redirect(url_for('main.userprofile'))
 
-
+# @main.route('/delete/<int:id>')
+# def delete(id):
+# 	task_to_delete = Course.query.get_or_404(id)
+# 	try:
+# 		db.session.delete(task_to_delete)
+# 		db.session.commit()
+# 		return redirect(url_for('userprofile'))
+# 	except:
+# 		return "There was a problem in deleting that task"
 
 
 
