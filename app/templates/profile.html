@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css"
+rel="stylesheet"
+/>
+ <!--css-->
+ <link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
+ <title>Userprofile</title>
+</head>
+
+
+<body>
+<!--add body content here-->
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-4">
+        <div class="card" style="width: fit-content; height: 90vh;">
+          <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/062.webp" class="card-img-top profile-img" alt="Chicago Skyscrapers" />
+          <div class="card-body userdescription">
+            <h3 class="card-title students-name">Lilian Muita</h3>
+            <p class="card-text">Bachelor of Economics and Finance</p>
+          </div>
+          <ul class="list-group list-group-light list-group-small">
+            <li class="list-group-item px-4">Cras justo odio</li>
+            <li class="list-group-item px-4">Dapibus ac facilisis in</li>
+            <li class="list-group-item px-4">Vestibulum at eros</li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+      <div class="col-7 mt-5">
+
+        {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                {% for message in messages %}
+                {{message}}
+          
+
+          {% endfor %}
+
+          {% endif %}
+          {% endwith %}
+
+        <div class="headertable">
+            <H2> COURSES</H2>
+            <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+            Register Courses</button>
+        </div>
+          <div class="display-table">
+            <table class="table align-middle">
+              <thead>
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col">CODE</th>
+                  <th scope="col">COURSE TITLE</th>
+                  <th scope="col">STATUS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for row in courses %}
+                <tr>
+                  <th scope="row">{{row.id}}</th>
+                  <td>{{row.code}}</td>
+                  <td>{{row.title}}</td>
+                  <td>
+                    <a href="" class="btn btn-warning action-btns" data-toggle="modal" data-target="#modaledit">View Classes</a>
+                    <a href="{{url_for('main.delete',course_id = row.id)}}" class="btn btn-danger  action-btns" onclick="return confirm('You will be dropped from this class !')">Deregister</a>
+                
+                    
+                </td>
+                </tr>
+              </tbody>
+              {% endfor %}
+            </table>
+        </div>
+  
+  
+      </div>
+  
+    </div>
+  </div>
+   
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Choose Courses Here</h5>
+          <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+    <form action="{{url_for('main.insert')}}" method="POST">
+   
+    <label class="form-label" for="select-code">Unit Code</label><BR>
+        <input class="form-control" list="codes" id="select-code" type="text" name="code" placeholder="Enter Unit Code...">
+        <datalist id="codes">
+        <option value="EAE 103">
+        <option value="EAE 203">
+        <option value="EAE 303">
+        <option value="EAB 403">
+        <option value="EAE 504">
+        <option value="EES 504">
+        <option value="EAE 604">
+        <option value="EAE 704">
+          <!--break for trial-->
+        <option value="EAE 304">
+        <option value="EAE 305">
+        <option value="EAE 309">
+        <option value="EES 303">
+        <option value="EAE 401">
+        <option value="EAE 408">
+        </datalist>
+    <br>
+    <!-- COURSE NAME-->
+    <label class="form-label" for="select-code">Unit Name</label><BR>
+        <input class="form-control" list="unit-names" id="select-code" type="text" name="title" placeholder="Enter Unit Name...">
+        <datalist id="unit-names">
+          <option value=" Managerial Economics">
+          <option value="Labour Economics">
+          <option value="Health Economics">
+          <option value="Fundamentals of Econometrics II">
+          <option value="Operations Research I">
+          <option value="Economics of Microfinance II">
+          <option value="Taxation Economics and Policy">
+        </datalist>
+
+
+    
+        <div class="modal-footer form-group">
+            <button type="submit" class="btn btn-primary">Add Course</button>
+        </div>
+    </form>
+
+
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  
+
+
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"
+></script>
+</body>
+</html>
