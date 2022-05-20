@@ -80,7 +80,7 @@ rel="stylesheet"
                 </tr>
               </thead>
               <tbody>
-                {% for row in employees %}
+                {% for row in courses %}
                 <tr>
                   <th scope="row">{{row.id}}</th>
                   <td>{{row.code}}</td>
@@ -118,7 +118,15 @@ rel="stylesheet"
     <label class="form-label" for="select-code">Unit Code</label><BR>
         <input class="form-control" list="codes" id="select-code" type="text" name="code" placeholder="Enter Unit Code...">
         <datalist id="codes">
+        <option value="EAE 103">
+        <option value="EAE 203">
         <option value="EAE 303">
+        <option value="EAB 403">
+        <option value="EAE 504">
+        <option value="EES 504">
+        <option value="EAE 604">
+        <option value="EAE 704">
+          <!--break for trial-->
         <option value="EAE 304">
         <option value="EAE 305">
         <option value="EAE 309">
