@@ -1,8 +1,10 @@
 import os
-class Config():
+class Config:
+
     SECRET_KEY = 'secretkey1'
-    SQLALCHEMY_DATABASE_URI=''
-    
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://moringa:pass123@localhost/studentportal'
+    SQLALCHEMY_TRACK_MODIFICATIONS= False
+   
     
 class ProdConfig(Config):
     DEBUG = False
@@ -10,7 +12,7 @@ class ProdConfig(Config):
 class DevConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI=''
+    
     
 class TestingConfig(Config):
     TESTING = True
