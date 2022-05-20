@@ -49,12 +49,12 @@ def login():
         if user is not None and user.verify_password(login_form.password.data):
             #return check_password_hash(self.password_hash, password)
             #login_user(user,login_form.remember.data)
-            return redirect(request.args.get('next') or url_for('main.index'))
+            return redirect(request.args.get('next') or url_for('main.userprofile'))
 
         flash('Invalid username or Password')
 
     title = "Portal login"
-    return render_template('profile.html',login_form = login_form,title=title)
+    return render_template('login.html',login_form = login_form,title=title)
 
 
 # ....
@@ -75,10 +75,9 @@ def signup():
 
 # remove to be acceses only on user login
 @main.route('/userprofile')
+#@login_required
 def userprofile():
     all_course = Course.query.all()
-    
-    
     
     return render_template('profile.html',courses = all_course)
 
