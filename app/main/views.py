@@ -5,6 +5,8 @@ from app.models import User
 from app import db
 from flask_login import login_user,current_user
 
+
+
 @main.route('/')
 def index():
     """
