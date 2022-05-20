@@ -50,6 +50,20 @@ rel="stylesheet"
       </div>
       <div class="col-1"></div>
       <div class="col-7 mt-5">
+
+        {% with messages = get_flashed_messages() %}
+
+                {% if messages %}
+
+                {% for message in messages %}
+                {{message}}
+          
+
+          {% endfor %}
+
+          {% endif %}
+          {% endwith %}
+
         <div class="headertable">
             <H2> COURSES</H2>
             <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
@@ -59,25 +73,27 @@ rel="stylesheet"
             <table class="table align-middle">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
+                  <th scope="col"></th>
                   <th scope="col">CODE</th>
                   <th scope="col">COURSE TITLE</th>
                   <th scope="col">STATUS</th>
                 </tr>
               </thead>
               <tbody>
+                {% for row in courses %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>EAE 300</td>
-                  <td>Economics of Microfinance I</td>
+                  <th scope="row">{{row.id}}</th>
+                  <td>{{row.code}}</td>
+                  <td>{{row.title}}</td>
                   <td>
                     <a href="" class="btn btn-warning action-btns" data-toggle="modal" data-target="#modaledit">View Classes</a>
-                    <a href="" class="btn btn-danger  action-btns" onclick="return confirm('You will be dropped from this class !')">Deregister</a>
+                    <a href="{{url_for('main.delete',course_id = row.id)}}" class="btn btn-danger  action-btns" onclick="return confirm('You will be dropped from this class !')">Deregister</a>
                 
                     
                 </td>
                 </tr>
               </tbody>
+              {% endfor %}
             </table>
         </div>
   
@@ -97,12 +113,20 @@ rel="stylesheet"
         </div>
         <div class="modal-body">
 
-    <form action="">
-    <fieldset>
+    <form action="{{url_for('main.insert')}}" method="POST">
+   
     <label class="form-label" for="select-code">Unit Code</label><BR>
-        <input class="form-control" list="codes" id="select-code" type="text" placeholder="Enter Unit Code...">
+        <input class="form-control" list="codes" id="select-code" type="text" name="code" placeholder="Enter Unit Code...">
         <datalist id="codes">
+        <option value="EAE 103">
+        <option value="EAE 203">
         <option value="EAE 303">
+        <option value="EAB 403">
+        <option value="EAE 504">
+        <option value="EES 504">
+        <option value="EAE 604">
+        <option value="EAE 704">
+          <!--break for trial-->
         <option value="EAE 304">
         <option value="EAE 305">
         <option value="EAE 309">
@@ -113,7 +137,7 @@ rel="stylesheet"
     <br>
     <!-- COURSE NAME-->
     <label class="form-label" for="select-code">Unit Name</label><BR>
-        <input class="form-control" list="unit-names" id="select-code" type="text" placeholder="Enter Unit Name...">
+        <input class="form-control" list="unit-names" id="select-code" type="text" name="title" placeholder="Enter Unit Name...">
         <datalist id="unit-names">
           <option value=" Managerial Economics">
           <option value="Labour Economics">
@@ -125,9 +149,9 @@ rel="stylesheet"
         </datalist>
 
 
-    </fieldset>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Add Course</button>
+    
+        <div class="modal-footer form-group">
+            <button type="submit" class="btn btn-primary">Add Course</button>
         </div>
     </form>
 

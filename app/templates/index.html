@@ -21,11 +21,11 @@ body {font-family: "Lato", sans-serif}
     <a href="#" class="w3-bar-item w3-button w3-padding-large">Athenians Institute</a>
     <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">TRENDING</a>
     <a href="#tour" class="w3-bar-item w3-button w3-padding-large w3-hide-small">NEWSLETTER</a>
-    <a href="{{ url_for('main.login') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOGIN</a>
+    <a href="{{url_for('main.login')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">LOGIN</a>
     <div class="w3-dropdown-hover w3-hide-small">
       <button class="w3-padding-large w3-button" title="More">REGISTER <i class="fa fa-caret-down"></i></button>     
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="{{ url_for('main.signup') }}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SIGN UP</a>
+        <a href="{{url_for('main.userprofile')}}" class="w3-bar-item w3-button w3-padding-large w3-hide-small">SIGN UP</a>
         <a href="#" class="w3-bar-item w3-button">Support & Feedback</a>
         <a href="#" class="w3-bar-item w3-button">Media Gallery</a>
       </div>
@@ -47,21 +47,21 @@ body {font-family: "Lato", sans-serif}
 
   <!-- Automatic Slideshow Images -->
   <div class="mySlides w3-display-container w3-center">
-    <img src="/app/static/images/good-faces-DSj40n6beGk-unsplash.jpg" style="width:100%">
+    <img src="../static/images/good-faces-DSj40n6beGk-unsplash.jpg" style="width:100%">
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
       <h3>UPCOMING INTAKES</h3>
       <p><b> Application for Admission – July 2022 Intake (New Programmes) · Registrar (Academic Affairs) · Athenians Institute· P.O. Box 1699, NAIROBI</b></p>   
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
-    <img src="/app/static/images/seven-shooter-hPKTYwJ4FUo-unsplash.jpg" style="width:100%">
+    <img src="../static/images/seven-shooter-hPKTYwJ4FUo-unsplash.jpg" style="width:100%">
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
       <h3>OUR PROGRAMMES</h3>
       <p><b>We offer Professional Certifications and Government credited Programmes</b></p>    
     </div>
   </div>
   <div class="mySlides w3-display-container w3-center">
-    <img src="/app/static/images/christina-wocintechchat-com-UcZcsHSp8o4-unsplash.jpg" style="width:100%">
+    <img src="../static/images/christina-wocintechchat-com-UcZcsHSp8o4-unsplash.jpg" style="width:100%">
     <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
       <h3>ALUMNI EXPERIENCE</h3>
       <p><b>The combination of a diverse and smart student body, a beautiful campus, dedicated and passionate lecturers who have experience and makes an unforgettable educational experience.</b></p>    
@@ -76,15 +76,15 @@ body {font-family: "Lato", sans-serif}
     <div class="w3-row w3-padding-32">
       <div class="w3-third">
         <p>REMOTE LEARNING</p>
-        <img src="/app/static/images/clay-banks-OcnokxBmwQg-unsplash.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+        <img src="../static/images/clay-banks-OcnokxBmwQg-unsplash.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
       </div>
       <div class="w3-third">
         <p>HYBRID LEARNING</p>
-        <img src="/app/static/images/christina-wocintechchat-com-8jwCWlsBys8-unsplash.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+        <img src="../static/images/christina-wocintechchat-com-8jwCWlsBys8-unsplash.jpg" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
       </div>
       <div class="w3-third">
         <p>IN-PERSON</p>
-        <img src="/app/static/images/christina-wocintechchat-com-FBdmhGMdCso-unsplash.jpg" class="w3-round" alt="Random Name" style="width:60%">
+        <img src="../static/images/christina-wocintechchat-com-FBdmhGMdCso-unsplash.jpg" class="w3-round" alt="Random Name" style="width:60%">
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@ body {font-family: "Lato", sans-serif}
 
       <div class="w3-row-padding w3-padding-32" style="margin:0 -16px">
         <div class="w3-third w3-margin-bottom">
-          <img src="/app/static/images/emmanuel-ikwuegbu-h5xEHzfepNk-unsplash.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">
+          <img src="../static/images/emmanuel-ikwuegbu-h5xEHzfepNk-unsplash.jpg" alt="New York" style="width:100%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
             <p><b>Data Science</b></p>
             <p class="w3-opacity">Mon 27 July 2022</p>
@@ -112,7 +112,7 @@ body {font-family: "Lato", sans-serif}
           </div>
         </div>
         <div class="w3-third w3-margin-bottom">
-          <img src="/app/static/images/mars-sector-6-IgUR1iX0mqM-unsplash.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
+          <img src="../static/images/mars-sector-6-IgUR1iX0mqM-unsplash.jpg" alt="Paris" style="width:100%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
             <p><b>Internet of Things(IoT)</b></p>
             <p class="w3-opacity">Mon 27 Sep 2022</p>
@@ -121,7 +121,7 @@ body {font-family: "Lato", sans-serif}
           </div>
         </div>
         <div class="w3-third w3-margin-bottom">
-          <img src="/app/static/images/caique-silva-KJE--xk4AWE-unsplash.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
+          <img src="../static/images/caique-silva-KJE--xk4AWE-unsplash.jpg" alt="San Francisco" style="width:100%" class="w3-hover-opacity">
           <div class="w3-container w3-white">
             <p><b>Software Development</b></p>
             <p class="w3-opacity">Mon 27 Sep 2022</p>
