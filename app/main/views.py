@@ -95,22 +95,15 @@ def insert():
         new_course = Course(code = code, title=title)
         db.session.add(new_course)
         db.session.commit()
-    
-        
-        
-        #my_data = Course(code,title)
-        #my_data.save_course()
-        #db.session.add(my_data)
-        #db.session.commit(my_data)
         
         flash ("You have succesfully registered for the course")
         return redirect(url_for('main.userprofile'))
     
 #delete course
-@main.route('/delete/<id>/', methods = ['GET', 'POST'])
+@main.route('/delete/<id>')
 def delete(id):
-    my_data = Course.query.get(id)
-    db.session.delete(my_data)
+    course_delete = Course.query.get(id)
+    db.session.delete(course_delete)
     db.session.commit()
     flash("The course has been deleted")
 
